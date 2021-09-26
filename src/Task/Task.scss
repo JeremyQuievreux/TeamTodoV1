@@ -4,10 +4,13 @@
     height: 200px;
     width: 200px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     box-shadow: 10px 10px 30px black;
     margin: 30px;
+    padding: 10px;
+    text-align: justify;
     .close-btn{
         position: absolute;
         right: 10px;
@@ -34,3 +37,12 @@
 .user4{
     background-color: greenyellow;
 }
+
+.user-name{
+    position: absolute;
+    top: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+}
+

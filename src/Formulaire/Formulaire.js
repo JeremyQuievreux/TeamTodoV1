@@ -4,26 +4,26 @@ import './Formulaire.scss';
 function Formulaire({tasks, setTasks}) {
 
     const [task, setTask] = useState();
-    const [type, setType] = useState("user1");
+    const [user, setUser] = useState("Team Member 1");
     const [taskId, setTaskId] = useState(0);
 
     function handleInput(e) {
         setTask(e.target.value);
     }
     function handleChange(e) {
-        setType(e.target.value);
+        setUser(e.target.value);
     }
     function handleClick() {
         setTaskId(taskId + 1);
         setTasks([...tasks,{
             id : taskId,
             task : task,
-            type : type,
+            user : user,
             done : false
         }]);
         document.getElementById("task").value = "";
-        document.getElementById("task-type").value ="user1";
-        setType("user1");
+        document.getElementById("task-user").value ="Team Member 1";
+        setUser("Team Member 1");
         setTask("");
         
     }
@@ -51,14 +51,14 @@ function Formulaire({tasks, setTasks}) {
         <div className="form-container">
             <div className="form">
                 <input onChange={handleInput} type="text" name="task" id="task" placeholder="What do you want to remember ?" />
-                <select onChange={handleChange} name="task-type" id="task-type">
-                    <option value="user1">Team Member 1</option>
-                    <option value="user2">Team Member 2</option>
-                    <option value="user3">Team Member 3</option>
-                    <option value="user4">Team Member 4</option>
+                <select onChange={handleChange} name="task-user" id="task-user">
+                    <option value="Team Member 1">Team Member 1</option>
+                    <option value="Team Member 2">Team Member 2</option>
+                    <option value="Team Member 3">Team Member 3</option>
+                    <option value="Team Member 4">Team Member 4</option>
                 </select>
-                <button onClick={handleClick} >Remember that !</button>
-                <button onClick={handleReset}>Reset Data</button>
+                <button id="add-btn" onClick={handleClick} >Remember that !</button>
+                <button id="reset-btn" onClick={handleReset}>Reset Data</button>
             </div>
         </div>
     )
