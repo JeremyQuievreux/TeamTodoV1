@@ -4,7 +4,7 @@ function Header() {
     
     return(
         <header>
-            <h1>My Todo List</h1>
+            <h1>My Team ToDo</h1>
         </header>
     )
 }

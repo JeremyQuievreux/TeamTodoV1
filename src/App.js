@@ -8,7 +8,18 @@ import TasksList from './TasksList/TasksList';
 
 function App() {
 
-  const [tasks, setTasks] = useState([]);
+  let localTeamTodo = localStorage.getItem("TeamTodo");
+
+  function checkLocalTodo() {
+    if (localTeamTodo) {
+      let parseTeamTodo = JSON.parse(localTeamTodo);
+      return parseTeamTodo;
+    } else {
+      return ([]);
+    }
+  }
+
+  const [tasks, setTasks] = useState(checkLocalTodo());
 
   return (
     <div className="App">

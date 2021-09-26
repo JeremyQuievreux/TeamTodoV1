@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Formulaire.scss';
 
 function Formulaire({tasks, setTasks}) {
 
-    const [task, setTask] = useState("");
+    const [task, setTask] = useState();
     const [type, setType] = useState("user1");
     const [taskId, setTaskId] = useState(0);
 
@@ -22,8 +22,28 @@ function Formulaire({tasks, setTasks}) {
             done : false
         }]);
         document.getElementById("task").value = "";
+        document.getElementById("task-type").value ="user1";
+        setType("user1");
         setTask("");
-        /* document.getElementById("task-type").value ="type"; */
+        
+    }
+
+    useEffect(() => {
+        localStorage.setItem("TeamTodo", JSON.stringify(tasks));
+    },[tasks]);
+
+    function handleReset() {
+        let response = prompt("Voulez vous vraiment supprimer toute vous taches ?\n \"OUI\" ou \"NON\"");
+          checkResponse(response);    
+    }
+    function checkResponse(response){
+        if (response === "OUI") {
+            localStorage.removeItem("TeamTodo");
+            setTasks([]);
+        } else if (response === "NON") {
+        } else {
+            handleReset();
+        }
     }
 
 
@@ -38,6 +58,7 @@ function Formulaire({tasks, setTasks}) {
                     <option value="user4">Team Member 4</option>
                 </select>
                 <button onClick={handleClick} >Remember that !</button>
+                <button onClick={handleReset}>Reset Data</button>
             </div>
         </div>
     )
