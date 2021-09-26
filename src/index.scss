@@ -1,0 +1,12 @@
+$primary : #b39ddb;
+$secondary : #836fa9;
+$tier : #e6ceff;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: $primary;
+}
